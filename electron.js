@@ -66,6 +66,8 @@ ipcMain.handle('quit', async () => {
   app.quit();
 });
 
+
+// -- OpenAI API
 ipcMain.handle('createChatCompletion', async (event, arg) => {
   const { apiKey, model, temperature, top_p, n, messages } = arg.body;
 

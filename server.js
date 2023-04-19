@@ -11,6 +11,8 @@ app.listen(3001, () => console.log('Listening on port 3001'));
 
 const max_tokens = 8170;
 
+
+// -- OpenAI API
 app.post('/createChatCompletion', async (req, res) => {
   const { apiKey, model, temperature, top_p, n, messages } = req.body;
 

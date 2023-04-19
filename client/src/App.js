@@ -21,6 +21,8 @@ function App() {
 
   } = config;
 
+
+  // -- OpenAI API
   async function createChatCompletion(body) {
     let response;
     let result;
@@ -48,6 +50,7 @@ function App() {
     return response;
   };
 
+  /* -- Call the API -- */
   createChatCompletion({
     apiKey: '',
     model: 'gpt-4', /* gpt-3.5-turbo */
