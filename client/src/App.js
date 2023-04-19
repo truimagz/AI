@@ -44,6 +44,20 @@ function App() {
     return response;
   };
 
+  createChatCompletion({
+    apiKey: '',
+    model: 'gpt-4', /* gpt-3.5-turbo */
+    temperature: 1, 
+    top_p: 1, 
+    n: 3, 
+    messages: [
+      { role: 'system', content: 'You are an AI language model' },
+      { role: 'user', content: 'I am a real Human' },
+      { role: 'assistant', content: 'I am an AI language model' },
+      { role: 'user', content: 'Hello World!' }
+    ]
+  });
+
   return (
     <></>
   );
