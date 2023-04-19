@@ -1,0 +1,61 @@
+{
+  "name": "ai-developer-assistant",
+  "description": "AI Developer Assistant",
+  "version": "5.0.5",
+  "main": "electron.js",
+  "scripts": {
+    "start": "node server.js",
+    "start-react": "cd client && npm start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "---": "---",
+    "dev": "concurrently \"npm start\" \"npm run start-react\" \"wait-on http://localhost:3000 && electron .\"",
+    "build": "cd client && npm run build",
+    "dist": "electron-builder --mac --x64"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@electron/osx-sign": "^1.0.4",
+    "body-parser": "^1.20.1",
+    "electron-bundler": "0.0.0-alpha.0.0",
+    "electron-is-dev": "^2.0.0",
+    "express": "^4.18.2",
+    "gpt-3-encoder": "^1.1.4",
+    "openai": "^3.2.1"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "electron": "^16.2.8",
+    "electron-builder": "^23.6.0",
+    "electron-packager": "^16.0.0",
+    "wait-on": "^6.0.0"
+  },
+  "build": {
+    "appId": "com.ai.developer-assistant",
+    "productName": "AI Developer Assistant",
+    "directories": {
+      "buildResources": "client/public",
+      "output": "release-builds"
+    },
+    "files": [
+      "electron.js",
+      "server.js",
+      "client/build/**/*",
+      "preload.js",
+      "main_process.js"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "icons/mac/icon.icns",
+      "provisioningProfile": "entitlements/comaideveloperassistant.provisionprofile",
+      "entitlements": "entitlements/entitlements.mac.plist"
+    },
+    "win": {
+      "icon": "client/public/icon.png"
+    },
+    "linux": {
+      "icon": "client/public/icon.png"
+    }
+  }
+}
