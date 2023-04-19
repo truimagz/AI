@@ -14,14 +14,20 @@ const max_tokens = 8170;
 app.post('/createChatCompletion', async (req, res) => {
   const { apiKey, model, temperature, top_p, n, messages } = req.body;
 
+  console.log(':::req', req);
+
   try {
     const response = await new OpenAIApi(new Configuration({ apiKey })).createChatCompletion({
       model, temperature, top_p, n, messages,
       max_tokens: max_tokens - encode(JSON.stringify(messages)).length
     });
 
+    console.log(':::response', response);
+
     res.status(200).json({ data: response.data.choices[0].message.content });
   } catch (e) {
+    console.log(':::error', e);
+
     res.status(200).json({ error: e });
   }
 });

@@ -69,6 +69,8 @@ ipcMain.handle('quit', async () => {
 ipcMain.handle('createChatCompletion', async (event, arg) => {
   const { apiKey, model, temperature, top_p, n, messages } = arg.body;
 
+  console.log(':::arg', arg);
+
   return new Promise(async resolve => {
     try {
       const response = await new OpenAIApi(new Configuration({ apiKey })).createChatCompletion({
@@ -76,8 +78,12 @@ ipcMain.handle('createChatCompletion', async (event, arg) => {
         max_tokens: max_tokens - encode(JSON.stringify(messages)).length
       });
 
+      console.log(':::response', response);
+
       resolve({ data: response.data.choices[0].message.content });
     } catch (e) {
+      console.log(':::error', e);
+
       resolve({ error: e });
     }
   });  

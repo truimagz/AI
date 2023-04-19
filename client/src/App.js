@@ -25,6 +25,8 @@ function App() {
     let response;
     let result;
 
+    console.log(':::body', body);
+
     if (isDev) {
       response = await fetch('/createChatCompletion', {
         method: 'POST',
@@ -40,6 +42,8 @@ function App() {
 
       result = response;
     }
+
+    console.log(':::result', result);
     
     return response;
   };
