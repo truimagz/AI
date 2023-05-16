@@ -47,7 +47,7 @@ function App() {
 
     console.log(':::result', result);
     
-    return response;
+    return result;
   };
 
   /* -- Call the API -- */
