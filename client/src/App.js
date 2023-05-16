@@ -38,7 +38,7 @@ function App() {
 
       result = await response.json();
     } else {
-      response = await window.api.invoke('createCompletion', {
+      response = await window.api.invoke('createChatCompletion', {
         body
       });
 
